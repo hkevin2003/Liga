@@ -700,73 +700,179 @@ body {
     letter-spacing: 1px;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   RESPONSIVE - MOBILE FIRST
+   ======================================== */
+
+/* ---- TABLET (≤1024px) ---- */
+@media (max-width: 1024px) {
+    body { padding: 15px; }
+
+    .header { padding: 25px 30px; gap: 20px; }
+    .header h1 { font-size: 2.8em; }
+
+    .matches-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+    .config-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+    .tab { padding: 16px 28px; font-size: 1.05em; }
+
+    .content { padding: 30px; }
+
+    .floating-color-panel { right: 20px; width: 270px; }
+    .color-palette-btn { right: 20px; bottom: 100px; }
+    .add-btn { right: 20px; bottom: 30px; }
+}
+
+/* ---- LARGE PHONE / SMALL TABLET (≤768px) ---- */
 @media (max-width: 768px) {
+    body { padding: 0; }
+
+    .container { border-radius: 0; }
+
+    /* Header */
     .header {
         flex-direction: column;
-        padding: 20px;
-    }
-
-    .header-logo {
-        width: 100px;
-        height: 100px;
-    }
-
-    .header h1 {
-        font-size: 2em;
+        padding: 20px 16px 16px;
+        gap: 12px;
         text-align: center;
     }
-
-    .header p {
-        font-size: 0.9em;
-        text-align: center;
-    }
+    .header-logo,
+    .header-logo-wrapper { width: 90px; height: 90px; }
+    .header h1 { font-size: 2em; letter-spacing: 2px; }
+    .header p  { font-size: 0.9em; letter-spacing: 1px; }
 
     .logout-btn {
         position: relative;
-        top: 0;
-        right: 0;
-        margin-top: 15px;
+        top: auto; right: auto;
+        margin-top: 4px;
+        padding: 8px 18px;
+        font-size: 0.85em;
     }
 
+    /* Tabs */
     .tabs {
         overflow-x: auto;
-        padding: 0 10px;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 8px;
+        scrollbar-width: none;
     }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { padding: 14px 18px; font-size: 0.9em; white-space: nowrap; }
 
-    .tab {
-        padding: 15px 25px;
-        font-size: 1em;
-    }
+    /* Content */
+    .content { padding: 16px; min-height: 400px; }
+    .section-title { font-size: 1.5em; gap: 10px; margin-bottom: 20px; }
 
-    .content {
-        padding: 20px;
-    }
+    /* Match cards */
+    .matches-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+    .match-card { padding: 20px 16px; }
+    .match-date { font-size: 0.9em; padding: 6px 10px; }
+    .match-time { font-size: 1.2em; }
+    .team-logo { width: 65px; height: 65px; }
+    .team-name { font-size: 0.9em; }
+    .vs { font-size: 1.8em; }
+    .match-actions { flex-direction: row; gap: 8px; }
+    .match-actions .btn { font-size: 0.78em; padding: 7px 10px; }
 
-    .matches-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .standings-table {
-        font-size: 0.8em;
-    }
-
+    /* Tables */
+    .standings-table { font-size: 0.75em; border-radius: 10px; }
     .standings-table th,
-    .standings-table td {
-        padding: 12px 8px;
-    }
+    .standings-table td { padding: 10px 6px; }
+    .standings-table th:nth-child(7),
+    .standings-table td:nth-child(7),
+    .standings-table th:nth-child(8),
+    .standings-table td:nth-child(8) { display: none; } /* Hide GF GC on small screens */
+    .table-team-logo { width: 30px; height: 30px; }
+    .table-team-name { font-size: 0.9em; }
+    .position { font-size: 1.1em; width: 36px; }
+    .points { font-size: 1.1em; padding: 3px 8px; }
+    .goals-badge { font-size: 1.05em; padding: 5px 10px; }
 
-    .add-btn {
-        width: 60px;
-        height: 60px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 2em;
-    }
+    /* Modals */
+    .modal-content { padding: 24px 18px; border-radius: 14px; max-height: 95vh; }
+    .modal-header { font-size: 1.6em; margin-bottom: 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
 
-    .form-row {
-        grid-template-columns: 1fr;
+    /* Floating buttons */
+    .add-btn { width: 52px; height: 52px; bottom: 16px; right: 16px; font-size: 1.8em; }
+    .color-palette-btn { width: 48px; height: 48px; bottom: 80px; right: 16px; font-size: 1.3em; }
+    .floating-color-panel { right: 10px; left: 10px; width: auto; bottom: 140px; }
+
+    /* Config section */
+    .config-grid { grid-template-columns: 1fr; gap: 16px; }
+    .config-card { padding: 20px 16px; }
+
+    /* Login */
+    .login-container { padding: 32px 22px; }
+    .login-logo { width: 90px; height: 90px; }
+    .login-container h1 { font-size: 2em; }
+
+    /* Admin button on public page */
+    #adminBtn {
+        bottom: 16px !important;
+        right: 16px !important;
+        padding: 8px 14px !important;
+        font-size: 0.85em !important;
     }
+}
+
+/* ---- SMALL PHONE (≤480px) ---- */
+@media (max-width: 480px) {
+    .header h1 { font-size: 1.7em; letter-spacing: 1px; }
+    .header p  { font-size: 0.8em; }
+    .header-logo,
+    .header-logo-wrapper { width: 75px; height: 75px; }
+
+    .tab { padding: 12px 14px; font-size: 0.82em; }
+    .section-title { font-size: 1.25em; }
+    .content { padding: 12px; }
+
+    /* Standings — show only essential columns on very small screens */
+    .standings-table th:nth-child(4),
+    .standings-table td:nth-child(4),
+    .standings-table th:nth-child(5),
+    .standings-table td:nth-child(5),
+    .standings-table th:nth-child(6),
+    .standings-table td:nth-child(6),
+    .standings-table th:nth-child(9),
+    .standings-table td:nth-child(9) { display: none; } /* Hide G E P DG */
+
+    .standings-table { font-size: 0.7em; }
+    .standings-table th,
+    .standings-table td { padding: 9px 4px; }
+
+    .match-card { padding: 16px 12px; }
+    .team-logo { width: 55px; height: 55px; }
+    .team-name { font-size: 0.82em; }
+    .vs { font-size: 1.5em; }
+
+    .modal-content { padding: 20px 14px; }
+    .modal-header { font-size: 1.4em; }
+
+    .login-container { padding: 28px 18px; }
+    .login-container h1 { font-size: 1.8em; }
+    .login-logo { width: 75px; height: 75px; }
+
+    .floating-color-panel { bottom: 130px; }
+    .fcp-row { grid-template-columns: 70px 40px 1fr; gap: 8px; }
+}
+
+/* ---- VERY SMALL (≤360px — Galaxy S, iPhone SE) ---- */
+@media (max-width: 360px) {
+    .header h1 { font-size: 1.5em; }
+    .tab { padding: 10px 12px; font-size: 0.78em; }
+    .team-logo { width: 48px; height: 48px; }
+    .vs { font-size: 1.3em; }
+    .standings-table { font-size: 0.65em; }
+}
+
+/* Touch device improvements */
+@media (hover: none) {
+    .logo-edit-overlay { opacity: 0.6; } /* Always slightly visible on touch */
+    .match-card:hover { transform: none; }
+    .standings-table tbody tr:hover { transform: none; }
+    .team:hover .team-logo { transform: none; }
 }
 
 /* INLINE EDITABLE HEADER */
